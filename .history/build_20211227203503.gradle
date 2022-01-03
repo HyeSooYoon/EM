@@ -1,0 +1,66 @@
+plugins {
+	id 'org.springframework.boot' version '2.5.3'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+	id 'war'
+}
+
+group = 'com.emotion'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	
+	// Gradle 3.0 부터 의존 라이브러리 수정 시 재빌드가 필요한 라이브러리를 선택적으로 할 수 있도록 compile 대신 api 와 implementation 으로 나눠 필요없는 경우 재빌드 하지 않도록 함.
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-mustache'	
+	implementation'org.springframework.boot:spring-boot-starter-webflux'
+	implementation 'org.json:json:20171018'		
+	implementation 'org.springframework.boot:spring-boot-starter-aop'	
+	implementation 'com.google.guava:guava:11.0.2'
+	implementation"org.springframework.boot:spring-boot-starter-data-jpa"
+    implementation"com.h2database:h2"
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'com.google.code.gson:gson:2.8.6'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	
+	implementation 'commons-io:commons-io:2.7'
+	implementation 'org.apache.commons:commons-lang3:3.12.0'
+	implementation 'commons-codec:commons-codec:1.15'
+
+	// 컴파일 시에만 설정
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	// 개발시에만 설정
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	
+	// 라이브러리를 실행 시에 사용. 단, .war 에는 포함이 되지 않는다. 
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	
+	
+
+
+
+
+	
+
+    
+
+}
+
+test {
+	useJUnitPlatform()
+}

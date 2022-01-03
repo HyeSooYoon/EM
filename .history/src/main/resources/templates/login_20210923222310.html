@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>  
+    <link rel="stylesheet" href="/css/login.css"/>   
+	{{>common_header}}
+</head>
+<body>
+<div class="wrapper">
+	<div class="container">
+		<h1>Welcome</h1>
+		
+		<form class="form">
+			<input type="text" placeholder="Username">
+			<input type="password" placeholder="Password">
+			<button type="submit" id="login-button">Login</button>
+		</form>
+	</div>
+	
+	<ul class="bg-bubbles">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</div>
+<script>
+	const login = () => {
+		alert('hi');
+		fetch('http://localhost:5013/' + 'em', {
+			method: 'post',			
+			headers: {
+			'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(contentInfo)
+			})
+			.then(res => resolve(res.json())) 
+	}
+
+	document.querySelector('#login-button').addEventListener('click', (e) => {
+		e.preventDefault();
+		login();
+	})
+
+
+</script>
+</body>
+</html>
