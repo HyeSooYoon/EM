@@ -17,9 +17,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;  
+import org.springframework.web.bind.annotation.RestController;
+
+import lombok.extern.slf4j.Slf4j;  
 
 @RestController
+@Slf4j
 public class EMRestController {
 
     @Autowired
@@ -64,6 +67,11 @@ public class EMRestController {
     public List<TbDiaryTitle> DiaryTitleByEmotionCode(@PathVariable String emotion_cd) {         
         return emDiarySaveService.selectTitleByEmotionCode(emotion_cd); 
     }
+
+    @GetMapping("/em")
+      public void test() {
+          log.info("니미!");
+      }
 
    
  

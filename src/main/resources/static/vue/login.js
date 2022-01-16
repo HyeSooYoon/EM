@@ -50,8 +50,8 @@ export default {
       return {
           loginSuccess: false,
           loginError: false,
-          user: 'admin',
-          password: '1234',
+          user: 'a',
+          password: '1',
           error: false
       }
   },
@@ -65,7 +65,8 @@ export default {
                   }
               });
               if (result.status === 200) {
-                  this.loginSuccess = true
+                this.loginSuccess = true;
+                location.href = '/em';                   
               }
           } catch (err) {
               this.loginError = true;

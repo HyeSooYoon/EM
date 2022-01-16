@@ -16,30 +16,29 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/css/**", "/js/**", "/img/**", "/lib/**", "/h2_db/**");        
+        web.ignoring().antMatchers("/css/**", "/js/**", "/img/**", "/lib/**", "/h2_db/**", "/vue/**");        
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        http
-                // .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) 
-                // .and()
-                .httpBasic()
-                .and()
+        http.csrf().disable();
+        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) 
+                .and()                
                 .authorizeRequests()
-                .antMatchers("/h2_db/**").permitAll() 
-                .antMatchers("/main").permitAll()
-                .antMatchers("/em").authenticated()
-                .anyRequest().authenticated() 
-                .and()
-                .csrf().disable();
+                .antMatchers("/**").permitAll() 
+                // .antMatchers("/h2_db/**").permitAll() 
+                // .antMatchers("/main").permitAll()
+                // .antMatchers("/em").authenticated()
+                .anyRequest().authenticated() ;
+                
+                
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
-            .withUser("admin").password("{noop}1234").roles("USER");
+            .withUser("a").password("{noop}1").roles("USER");
     }
     
    
